@@ -13,13 +13,14 @@ run = True
 while run:
     vel = 0.5
     screen.fill("black")
-    pygame.draw.rect(screen, "red", pygame.Rect(playerX, playerY, w, h))
+    pygame.draw.rect(screen, "magenta", pygame.Rect(playerX, playerY, w, h))
 
 # Player movement
     keys = pygame.key.get_pressed()
     if (keys[pygame.K_LEFT] or keys[pygame.K_RIGHT]) and playerX > vel:
         if keys[pygame.K_DOWN] or keys[pygame.K_UP]:
-            vel *= 0.5 
+            vel *= 0.7
+            print(vel)
     if keys[pygame.K_LEFT] and playerX > vel:
         playerX -= vel
     if keys[pygame.K_RIGHT] and playerX < winW - h:
