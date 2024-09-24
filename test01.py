@@ -19,7 +19,7 @@ time0 = 0
 accelYUp = 0
 accelYDown = 0
 vel = 0
-friction = -0.12
+friction = .05
 
 
 ballPosX = 875
@@ -43,23 +43,7 @@ while run:
     pygame.draw.rect(screen, "red", pygame.Rect(ballPosX, ballPosY, 50, 50))
 
     # Player Movement Mechanic
-    keys = pygame.key.get_pressed()
-    accelY = 0
-    if keys[pygame.K_w] and player1PosY > 0: 
-        accelY -= .3
-        if vel >= 2:
-            vel = 2
-    accelY += vel * friction  
-    player1PosY += vel *dt + (accelY * (dt * dt))/2
-    vel =  accelY * dt
 
-    if keys[pygame.K_s] and player1PosY < winHeight - playerHeight:
-        accelY += .3
-        if vel >= 2:
-            vel = 2
-    accelY += vel * friction  
-    vel =  accelY * dt
-    player1PosY += vel *dt + (accelY * (dt * dt))/2
     # Quit Mechanic
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
