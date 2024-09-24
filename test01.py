@@ -14,14 +14,6 @@ player1PosY = 425
 player2PosX = 1800 - playerThickness
 player2PosY = 425
 
-deltaTime = 0
-time0 = 0
-accelYUp = 0
-accelYDown = 0
-vel = 0
-friction = .05
-
-
 ballPosX = 875
 ballPosY = 475
 run = True
