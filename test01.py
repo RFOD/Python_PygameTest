@@ -9,18 +9,41 @@ screen = pygame.display.set_mode((winWidth, winHeight))
 playerHeight = 180
 playerThickness = 35
 
-player1Pos = pygame.Vector2(0, (winHeight - playerHeight)/2)
-player2Pos = pygame.Vector2(winWidth - playerThickness, (winHeight - playerHeight)/2)
+player1Pos = pygame.Vector2(20, (winHeight - playerHeight)/2)
+player2Pos = pygame.Vector2(winWidth - playerThickness - 20, (winHeight - playerHeight)/2)
 
 ballHeight = 50
-ballwidth = 50
-
-ballPos = pygame.Vector2((winWidth - ballwidth)/2, (winHeight - ballHeight)/2)
+ballWidth = 50
+ballPos = pygame.Vector2((winWidth - ballWidth)/2, (winHeight - ballHeight)/2)
+ballDirection = pygame.Vector2(1, 1)
+ballVel = 5
+ballVelY = 1
 
 playerAccelRate = 2
 friction = .8
 vel1 = 0
 vel2 = 0
+
+ # Ball Behaviour
+
+def ballMovement(ballX, ballY, ballSpeed, ballSpeedY, ballDirectionX, ballDirectionY):
+    if ballDirectionX == 1 and ballX < winWidth - ballWidth:
+        ballX += ballSpeed
+    elif ballDirectionX == 1 and ballX >= winWidth - ballWidth:
+        ballDirectionX *= -1
+    if ballDirectionY == 1 and ballY > 0:
+        ballY -= ballSpeedY
+    elif ballDirectionY == 1 and ballY <= 0:
+        ballDirectionY *= -1
+    if ballDirectionX == -1 and ballX > 0:
+        ballX -= ballSpeed
+    elif ballDirectionX == -1 and ballX <= 0:
+        ballDirectionX *= -1
+    if ballDirectionY == -1 and ballY < winHeight - ballHeight:
+        ballY += ballSpeedY
+    elif ballDirectionY == -1 and ballY >= winHeight - ballHeight:
+        ballDirectionY *= -1
+    return ballX, ballY, ballDirectionX, ballDirectionY
 
 # Main Game loop --->
 
@@ -35,16 +58,12 @@ while run:
     # Drawing the objects on the screen
     pygame.draw.rect(screen, "white", pygame.Rect(player1Pos.x, player1Pos.y, playerThickness, playerHeight))
     pygame.draw.rect(screen, "white", pygame.Rect(player2Pos.x, player2Pos.y, playerThickness, playerHeight))
-    pygame.draw.rect(screen, "red", pygame.Rect(ballPos.x, ballPos.y, ballwidth, ballHeight))
+    pygame.draw.rect(screen, "red", pygame.Rect(ballPos.x, ballPos.y, ballWidth, ballHeight))
 
 
     # Ball Behaviour
 
-
-
-
-
-
+    ballPos.x, ballPos.y, ballDirection.x, ballDirection.y = ballMovement(ballPos.x, ballPos.y, ballVel, ballVelY, ballDirection.x, ballDirection.y)
 
 
     # Player Movement Mechanic
