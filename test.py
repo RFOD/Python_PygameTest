@@ -21,13 +21,13 @@ while run:
         if keys[pygame.K_DOWN] or keys[pygame.K_UP]:
             vel *= 0.7
             print(vel)
-    if keys[pygame.K_LEFT] and playerX > vel:
+    if keys[pygame.K_a] and playerX > vel:
         playerX -= vel
-    if keys[pygame.K_RIGHT] and playerX < winW - h:
+    if keys[pygame.K_d] and playerX < winW - h:
         playerX += vel
-    if keys[pygame.K_UP] and playerY > vel:
+    if keys[pygame.K_w] and playerY > vel:
         playerY -= vel
-    if keys[pygame.K_DOWN] and playerY < winH - h:
+    if keys[pygame.K_s] and playerY < winH - h:
         playerY += vel
     
 # Quit button
