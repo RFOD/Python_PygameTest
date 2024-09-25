@@ -56,9 +56,30 @@ while run:
     dt = clock.tick(60) * 0.001 * 60
 
     # Drawing the objects on the screen
+
+    pygame.draw.circle(screen, "white", (winWidth/2, winHeight/2), winHeight/4)
+    pygame.draw.circle(screen, "black", (winWidth/2, winHeight/2), winHeight/4 - 2)
+
+    pygame.draw.circle(screen, "white", (150, winHeight/2), winHeight * 0.2 + 1.5)
+    pygame.draw.circle(screen, "black", (150, winHeight/2), winHeight * 0.2 - 1)
+    pygame.draw.rect(screen, "black", pygame.Rect(0, winHeight * 0.3, 150, winHeight * 0.4 + 2))
+    pygame.draw.rect(screen, "white", pygame.Rect(0, winHeight * 0.3, 150, 2))
+    pygame.draw.rect(screen, "white", pygame.Rect(0, winHeight * 0.7, 150, 2))
+
+    pygame.draw.circle(screen, "white", (winWidth - 150, winHeight/2), winHeight * 0.2 + 2)
+    pygame.draw.circle(screen, "black", (winWidth - 150, winHeight/2), winHeight * 0.2)
+    pygame.draw.rect(screen, "black", pygame.Rect(winWidth - 150, winHeight * 0.3, 150, winHeight * 0.4 + 2))
+    pygame.draw.rect(screen, "white", pygame.Rect(winWidth - 150, winHeight * 0.3, 150, 1.5))
+    pygame.draw.rect(screen, "white", pygame.Rect(winWidth - 150, winHeight * 0.7, 150, 2))
+
+    pygame.draw.rect(screen, "white", pygame.Rect(winWidth/2 - 2, 0, 2, winHeight))
+
     pygame.draw.rect(screen, "white", pygame.Rect(player1Pos.x, player1Pos.y, playerThickness, playerHeight))
     pygame.draw.rect(screen, "white", pygame.Rect(player2Pos.x, player2Pos.y, playerThickness, playerHeight))
-    pygame.draw.rect(screen, "red", pygame.Rect(ballPos.x, ballPos.y, ballWidth, ballHeight))
+    pygame.draw.rect(screen, "red", (pygame.Rect(ballPos.x, ballPos.y, ballWidth, ballHeight)))
+
+    
+    
 
 
     # Ball Behaviour
